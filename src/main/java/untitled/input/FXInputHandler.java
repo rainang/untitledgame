@@ -3,6 +3,7 @@ package untitled.input;
 import javafx.scene.Node;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import untitled.Input;
 
 public class FXInputHandler extends Input.Handler
 {

@@ -1,7 +1,6 @@
 package untitled;
 
 import untitled.display.Display;
-import untitled.input.Input;
 
 import javax.annotation.Nonnull;
 

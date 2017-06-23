@@ -66,6 +66,7 @@ public class Loop
 	{
 		Game game = getGame();
 		State.Handler stateHandler = game.getStateHandler();
+		Input input = game.getInput();
 		Display display = game.getDisplay();
 		State currentState = stateHandler.getCurrentState();
 		
@@ -81,6 +82,7 @@ public class Loop
 			while (currentTime - nextStateUpdateTime >= 0 && numSkippedFrames++ < getMaxFrameSkips())
 			{
 				stateHandler.flushEventQueue();
+				input.update();
 				display.update();
 				currentState.update();
 				nextStateUpdateTime += getStateUpdateInterval();

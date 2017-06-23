@@ -1,5 +1,7 @@
 package untitled.input;
 
+import untitled.Input;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
