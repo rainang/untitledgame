@@ -10,7 +10,7 @@ public final class Input
 	private final Set<Button> buttons = Collections.newSetFromMap(new ConcurrentHashMap<>());
 	private final MouseLocation mouseLocation = new MouseLocation();
 	
-	Input(Handler handler)
+	public Input(Handler handler)
 	{
 		handler.setInput(this);
 	}
