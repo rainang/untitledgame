@@ -49,11 +49,6 @@ public class FXInputHandler extends Input.Handler
 		moveMouse((int) event.getX(), (int) event.getY());
 	}
 	
-	public void mouseDragged(MouseEvent event)
-	{
-		moveMouse((int) event.getX(), (int) event.getY());
-	}
-	
 	public void mouseEntered(MouseEvent event)
 	{
 		setMouseExited(false);
