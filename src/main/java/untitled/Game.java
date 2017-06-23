@@ -1,5 +1,8 @@
 package untitled;
 
+import untitled.display.Display;
+import untitled.input.Input;
+
 import javax.annotation.Nonnull;
 
 public interface Game
@@ -18,6 +21,9 @@ public interface Game
 	
 	@Nonnull
 	Display getDisplay();
+	
+	@Nonnull
+	Input getInput();
 	
 	@Nonnull
 	Logger getLogger();
