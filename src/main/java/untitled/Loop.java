@@ -64,20 +64,21 @@ public class Loop
 	
 	public void runLoop()
 	{
+		if (isRunning)
+			throw new IllegalStateException("Game is already running!");
+		
 		Game game = getGame();
 		
 		State.Handler stateHandler = game.getStateHandler();
-		State currentState = stateHandler.getCurrentState();
 		
 		long nextStateUpdateTime = System.nanoTime();
 		long nextFrameUpdateTime = System.nanoTime();
 		long currentTime;
 		
-		while (isRunning() || currentState instanceof State.Starting)
+		while (isRunning() || stateHandler.getCurrentState() instanceof State.Starting)
 		{
 			int numSkippedFrames = 0;
 			currentTime = System.nanoTime();
-			currentState = stateHandler.getCurrentState();
 			
 			while (currentTime - nextStateUpdateTime >= 0 && numSkippedFrames++ < getMaxFrameSkips())
 			{
@@ -87,7 +88,8 @@ public class Loop
 					.update();
 				game.getDisplay()
 					.update();
-				currentState.update();
+				stateHandler.getCurrentState()
+							.update();
 				
 				nextStateUpdateTime += getStateUpdateInterval();
 			}
@@ -106,6 +108,6 @@ public class Loop
 			}
 		}
 		
-		assert currentState instanceof State.Stopping : "Stopped outside of a stopping state";
+		assert stateHandler.getCurrentState() instanceof State.Stopping : "Stopped outside of a stopping state";
 	}
 }

@@ -8,10 +8,17 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public abstract class State
 {
-	@Nonnull
-	protected abstract Game getGame();
+	protected final Game game;
 	
-	public abstract String name();
+	public State(@Nonnull Game game)
+	{
+		this.game = game;
+	}
+	
+	public String name()
+	{
+		return getClass().getSimpleName();
+	}
 	
 	protected void setUp() {}
 	
@@ -26,22 +33,35 @@ public abstract class State
 	@Override
 	public String toString() { return name(); }
 	
-	public static abstract class Starting extends State
+	public static class Starting extends State
 	{
-		@Override
-		protected void update()
+		public Starting(@Nonnull Game game)
 		{
-			getGame().getGameLoop().isRunning = true;
+			super(game);
 		}
 		
-	}
-	
-	public static abstract class Stopping extends State
-	{
 		@Override
 		protected void update()
 		{
-			getGame().getGameLoop().isRunning = false;
+			game.getGameLoop().isRunning = true;
+			game.getDisplay()
+				.open();
+		}
+	}
+	
+	public static class Stopping extends State
+	{
+		public Stopping(@Nonnull Game game)
+		{
+			super(game);
+		}
+		
+		@Override
+		protected void update()
+		{
+			game.getGameLoop().isRunning = false;
+			game.getDisplay()
+				.close();
 		}
 	}
 	
@@ -55,9 +75,10 @@ public abstract class State
 		
 		private final Logger log;
 		
-		public Handler(@Nonnull Game game)
+		public Handler(@Nonnull Game game, State.Starting initialState)
 		{
 			log = game.getLogger();
+			currentState = initialState;
 		}
 		
 		void flushEventQueue()
