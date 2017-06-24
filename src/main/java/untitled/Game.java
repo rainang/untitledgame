@@ -24,4 +24,8 @@ public interface Game
 	
 	@Nonnull
 	Logger getLogger();
+	
+	void launch();
+	
+	void terminate();
 }
