@@ -1,4 +1,4 @@
-package untitled;
+package untitled.game;
 
 import javax.annotation.Nonnull;
 

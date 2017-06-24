@@ -1,5 +1,6 @@
-package untitled;
+package untitled.game;
 
+import untitled.Logger;
 import untitled.display.Graphics;
 import untitled.display.Scene;
 

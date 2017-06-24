@@ -1,6 +1,6 @@
 package untitled.input;
 
-import untitled.Input;
+import untitled.game.Input;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;

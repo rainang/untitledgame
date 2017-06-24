@@ -4,8 +4,8 @@ import javafx.application.Platform;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.FontSmoothingType;
 import javafx.stage.Stage;
-import untitled.Display;
-import untitled.Game;
+import untitled.game.Display;
+import untitled.game.Game;
 
 public abstract class FXDisplay extends Display<FXGraphicsWrapper>
 {

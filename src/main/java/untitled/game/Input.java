@@ -1,4 +1,4 @@
-package untitled;
+package untitled.game;
 
 import java.awt.event.KeyEvent;
 import java.util.Collections;

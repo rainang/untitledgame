@@ -1,4 +1,6 @@
-package untitled;
+package untitled.game;
+
+import untitled.Logger;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayDeque;

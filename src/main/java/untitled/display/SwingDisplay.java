@@ -1,6 +1,7 @@
 package untitled.display;
 
-import untitled.Game;
+import untitled.game.Display;
+import untitled.game.Game;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +10,7 @@ import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
 import java.lang.reflect.InvocationTargetException;
 
-public abstract class SwingDisplay extends untitled.Display<SwingGraphicsWrapper>
+public abstract class SwingDisplay extends Display<SwingGraphicsWrapper>
 {
 	private static final int NUM_BUFFERS = 3;
 	

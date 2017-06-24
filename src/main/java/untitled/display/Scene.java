@@ -1,7 +1,7 @@
 package untitled.display;
 
-import untitled.Input;
-import untitled.State;
+import untitled.game.Input;
+import untitled.game.State;
 
 public interface Scene
 {
