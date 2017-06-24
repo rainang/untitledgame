@@ -65,9 +65,8 @@ public class Loop
 	public void runLoop()
 	{
 		Game game = getGame();
+		
 		State.Handler stateHandler = game.getStateHandler();
-		Input input = game.getInput();
-		Display display = game.getDisplay();
 		State currentState = stateHandler.getCurrentState();
 		
 		long nextStateUpdateTime = System.nanoTime();
@@ -78,13 +77,18 @@ public class Loop
 		{
 			int numSkippedFrames = 0;
 			currentTime = System.nanoTime();
+			currentState = stateHandler.getCurrentState();
 			
 			while (currentTime - nextStateUpdateTime >= 0 && numSkippedFrames++ < getMaxFrameSkips())
 			{
 				stateHandler.flushEventQueue();
-				input.update();
-				display.update();
+				
+				game.getInput()
+					.update();
+				game.getDisplay()
+					.update();
 				currentState.update();
+				
 				nextStateUpdateTime += getStateUpdateInterval();
 			}
 			
@@ -94,7 +98,10 @@ public class Loop
 			{
 				float leftOverTime = nextStateUpdateTime - currentTime;
 				float deltaTime = (getStateUpdateInterval() - leftOverTime) / getStateUpdateInterval();
-				display.render(deltaTime);
+				
+				game.getDisplay()
+					.render(deltaTime);
+				
 				nextFrameUpdateTime += getFrameUpdateInterval();
 			}
 		}
