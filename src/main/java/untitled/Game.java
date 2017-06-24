@@ -1,7 +1,5 @@
 package untitled;
 
-import untitled.display.Display;
-
 import javax.annotation.Nonnull;
 
 public interface Game
